@@ -1,0 +1,38 @@
+table {
+  border-collapse: collapse; /* Remove space between table borders */
+  margin: 20px 0; /* Add some spacing above and below the table */
+  font-size: 18px;
+  text-align: left; /* Align text to the left */
+}
+
+th, td {
+  padding: 12px 15px; /* Padding inside cells for a cleaner look */
+  border: 1px solid #dddddd; /* Light border between cells */
+}
+
+th {
+  background-color: #f2f2f2; /* Light gray background for the header */
+  color: #333; /* Darker text color for the header */
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternate row color */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Hover effect for table rows */
+}
+
+td {
+  color: #555; /* Slightly muted text color for the body */
+}
+
+table, th, td {
+  border: 1px solid #ddd; /* Light border for all cells and header */
+}
+
+table {
+  border-spacing: 0; /* Remove default table spacing */
+}
+
