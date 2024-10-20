@@ -7,7 +7,7 @@ import { EmployeeModule } from './employee/employee.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, CommonModule, EmployeeModule],
+  imports: [RouterOutlet, FormsModule, CommonModule, EmployeeModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

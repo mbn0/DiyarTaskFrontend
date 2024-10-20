@@ -1,0 +1,26 @@
+<h2>Edit Employee</h2>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+  id
+  <input type="text" name="id" [(ngModel)]="id" required/>
+
+  name
+  <input type="text" name="name" [(ngModel)]="empEdit.employeeName" required/>
+
+  department
+  <input type="text" name="department" [(ngModel)]="empEdit.departmentId" required/>
+
+  salary
+  <input type="text" name="salary" [(ngModel)]="empEdit.salary" required/>
+
+  email
+  <input type="text" name="email" [(ngModel)]="empEdit.email" required/>
+
+  mobileNo
+  <input type="text" name="mobileNo" [(ngModel)]="empEdit.mobileNo" required/>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+model : {{form.value | json}}
