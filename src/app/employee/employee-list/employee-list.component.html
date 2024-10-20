@@ -1,3 +1,5 @@
+<div class="center-container">
+<button class="add-employee-btn" (click)="Add()">Add Employee</button>
 <table>
   <thead>
     <th>id</th>
@@ -7,6 +9,7 @@
     <th>email</th>
     <th>mobile</th>
     <th>join date</th>
+    <th>Edit</th>
   </thead>
   <tbody>
     <tr *ngFor="let emp of empList">
@@ -17,6 +20,8 @@
       <td>{{ emp.email }}</td>
       <td>{{ emp.mobileNo }}</td>
       <td>{{ emp.joiningDate }}</td>
+      <td><button (click)="edit(emp.employeeId)">Edit </button> </td>
     </tr>
   </tbody>
 </table>
+</div>

@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EditEmployee, EmployeeService } from '../employee.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-edit',
   templateUrl: './employee-edit.component.html',
   styleUrl: './employee-edit.component.css'
 })
-export class EmployeeEditComponent {
+export class EmployeeEditComponent  implements OnInit{
+
+
+  constructor(private empServ: EmployeeService, private route: ActivatedRoute, private router: Router) { }
 
   id: number = 0;
 
-  constructor(private empServ: EmployeeService) { }
+  ngOnInit(): void {
+    this.id = Number(this.route.snapshot.paramMap.get('id'))
+
+  }
 
   empEdit: EditEmployee = {
     employeeName: '',
@@ -40,6 +48,10 @@ export class EmployeeEditComponent {
       error =>{
         console.error("error message type thing", error);
       })
+  }
+
+  back() {
+    this.router.navigate([''])
   }
 
 }

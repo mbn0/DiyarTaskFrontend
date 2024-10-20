@@ -1,8 +1,36 @@
+.center-container {
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Button styling */
+.add-employee-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 30px; /* Increase padding for a bigger button */
+  text-align: center;
+  font-size: 20px; /* Increase font size */
+  cursor: pointer;
+  border-radius: 8px; /* Slightly larger border radius for a softer look */
+  margin-bottom: 20px; /* Space below the button */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.add-employee-btn:hover {
+  background-color: #45a049; /* Hover effect */
+}
+
+/* Table styling */
 table {
   border-collapse: collapse; /* Remove space between table borders */
   margin: 20px 0; /* Add some spacing above and below the table */
   font-size: 18px;
   text-align: left; /* Align text to the left */
+  width: 80%; /* Set a width for the table to fit better in the center */
 }
 
 th, td {

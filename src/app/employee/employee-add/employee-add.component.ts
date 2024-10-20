@@ -1,5 +1,6 @@
 import { Component, } from '@angular/core';
 import { EmployeeService, Employee, AddEmployee } from '../employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-add',
@@ -8,7 +9,7 @@ import { EmployeeService, Employee, AddEmployee } from '../employee.service';
 })
 export class EmployeeAddComponent {
 
-  constructor(private empServ: EmployeeService) { }
+  constructor(private empServ: EmployeeService, private router: Router) { }
 
   empAdd: AddEmployee = {
     employeeName: '',
@@ -21,23 +22,26 @@ export class EmployeeAddComponent {
 
   onSubmit(object: any) {
     console.log(object)
-      this.empAdd = {
-    employeeName: this.empAdd.employeeName,
-    departmentId: Number(this.empAdd.departmentId),
-    salary: Number(this.empAdd.salary),
-    email: this.empAdd.email,
-    mobileNo:this.empAdd.mobileNo
-  };
-
-    console.log(this.empAdd)
+    this.empAdd = {
+      employeeName: this.empAdd.employeeName,
+      departmentId: Number(this.empAdd.departmentId),
+      salary: Number(this.empAdd.salary),
+      email: this.empAdd.email,
+      mobileNo: this.empAdd.mobileNo
+    };
     this.empServ.addEmployee(this.empAdd)
 
-    // old way to subscribe
+      // old way to subscribe
       .subscribe(response => {
-        console.log("added successfully type thing",response);
+        this.router.navigate([''])
+        console.log("added successfully type thing", response);
       },
-      error =>{
-        console.error("error message type thing", error);
-      })
+        error => {
+          console.error("error message type thing", error);
+        })
+  }
+
+  back() {
+    this.router.navigate([''])
   }
 }

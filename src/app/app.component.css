@@ -1,0 +1,15 @@
+.simple-title {
+  font-family: 'Arial', sans-serif; /* Simple, clean font */
+  font-size: 3rem; /* Large, but not too bold */
+  color: #333; /* Dark grey color */
+  text-align: center; /* Center-align the title */
+  letter-spacing: 0.05em; /* Slightly increase letter spacing */
+  text-transform: uppercase; /* Uppercase letters */
+  font-weight: 600; /* Semi-bold weight */
+  margin: 20px 0; /* Spacing around the title */
+  border-bottom: 2px solid #ff416c; /* Simple underline effect */
+  padding-bottom: 10px; /* Add some space between text and underline */
+  transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+
+

@@ -5,13 +5,13 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from './employee.service';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [EmployeeListComponent, EmployeeAddComponent, EmployeeEditComponent],
   imports: [
-    CommonModule, FormsModule,
+    CommonModule, FormsModule, RouterModule
   ],
   exports: [
     EmployeeListComponent,
