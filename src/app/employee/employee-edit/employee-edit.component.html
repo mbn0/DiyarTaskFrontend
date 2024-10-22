@@ -1,29 +1,39 @@
 <h2>Edit Employee {{id}}</h2>
-<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="employee-form">
+<form #form="ngForm" (ngSubmit)="onSubmit()" class="employee-form">
 
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" name="name" [(ngModel)]="empEdit.employeeName" required class="form-input" />
+    <input type="text" name="name" [(ngModel)]="emp.employeeName" required class="form-input" />
   </div>
 
   <div class="form-group">
-    <label for="department">Department</label>
-    <input type="text" name="department" [(ngModel)]="empEdit.departmentId" required class="form-input" />
+      <label for="department">Select Department:</label>
+    <select [(ngModel)]="emp.departmentId" required class="form-input" name="department">
+      <option [ngValue]= "null" >Select a department</option>
+      <option *ngFor="let dep of depList" [ngValue]="dep.departmentId">
+      {{dep.departmentName}}
+      </option>
+    </select>
   </div>
 
   <div class="form-group">
     <label for="salary">Salary</label>
-    <input type="text" name="salary" [(ngModel)]="empEdit.salary" required class="form-input" />
+    <input type="text" name="salary" [(ngModel)]="emp.salary" required class="form-input" />
   </div>
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" name="email" [(ngModel)]="empEdit.email" required class="form-input" />
+    <input type="text" name="email" [(ngModel)]="emp.email" required class="form-input" />
   </div>
 
   <div class="form-group">
     <label for="mobileNo">Mobile No</label>
-    <input type="text" name="mobileNo" [(ngModel)]="empEdit.mobileNo" required class="form-input" />
+    <input type="text" name="mobileNo" [(ngModel)]="emp.mobileNo" required class="form-input" />
+  </div>
+
+  <div class="form-group">
+    <label for="date">Joining Date</label>
+    <input type="text" name="Joining Date" [(ngModel)]="emp.joiningDate" required class="form-input" />
   </div>
 
   <div class="button-group">
@@ -31,4 +41,3 @@
     <button type="button" class="btn-cancel" (click)="back()">Cancel</button>
   </div>
 </form>
-

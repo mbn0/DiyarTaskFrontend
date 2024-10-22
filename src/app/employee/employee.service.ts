@@ -2,27 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface EditEmployee{
-  employeeName: string,
-  departmentId: number | null,
-  salary: number | null,
-  email: string,
-  mobileNo: string,
-}
-
 export interface AddEmployee{
   employeeName: string,
   departmentId: number | null,
   salary: number | null,
   email: string,
   mobileNo: string,
+  joiningDate: Date | null,
 }
 
 export interface Employee{
-  employeeId: number,
+  employeeId: number ,
   employeeName: string,
-  departmentId: number,
-  salary: number,
+  departmentId: number ,
+  salary: number ,
   email: string,
   mobileNo: string,
   joiningDate: Date,
@@ -40,11 +33,14 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.apiUrl);
   }
 
+  getEmployeeById(id: number): Observable<Employee> {
+      return this.http.get<Employee>(`${this.apiUrl}/${id}`);
+  }
   addEmployee(emp: AddEmployee): Observable<Employee>{
     return this.http.post<Employee>(this.apiUrl, emp, {headers:{ 'Content-Type': 'application/json'}}); //post<return type>, the server will respond with a full "Employee" object
   }
 
-  editEmployee(emp : EditEmployee, id: number): Observable<Employee> {
-      return this.http.put<Employee>(`${this.apiUrl}/${id}`, emp);
+  editEmployee(emp : Employee): Observable<Employee> {
+      return this.http.put<Employee>(`${this.apiUrl}/${emp.employeeId}`, emp);
   }
 }

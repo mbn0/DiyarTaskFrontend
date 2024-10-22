@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { EmployeeService } from './employee.service';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import { RouterModule } from '@angular/router';
+import { DepartmentService } from './department.service';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     EmployeeEditComponent
   ],
   providers: [
-    EmployeeService
+    EmployeeService,
+    DepartmentService
   ]
 })
 export class EmployeeModule { }

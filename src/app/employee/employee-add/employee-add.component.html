@@ -7,8 +7,13 @@
   </div>
 
   <div class="form-group">
-    <label for="department">Department</label>
-    <input type="text" name="department" [(ngModel)]="empAdd.departmentId" required class="form-input" />
+      <label for="department">Select Department:</label>
+    <select [(ngModel)]="empAdd.departmentId" required class="form-input" name="department">
+      <option [ngValue]= "null" >Select a department</option>
+      <option *ngFor="let dep of depList" [ngValue]="dep.departmentId">
+      {{dep.departmentName}}
+      </option>
+    </select>
   </div>
 
   <div class="form-group">
@@ -24,6 +29,11 @@
   <div class="form-group">
     <label for="mobileNo">Mobile No</label>
     <input type="text" name="mobileNo" [(ngModel)]="empAdd.mobileNo" required class="form-input" />
+  </div>
+
+  <div class="form-group">
+    <label for="date">Joining Date</label>
+    <input type="text" name="Joining Date" [(ngModel)]="empAdd.joiningDate" required class="form-input" />
   </div>
 
   <div class="button-group">
