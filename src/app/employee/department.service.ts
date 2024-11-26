@@ -20,5 +20,4 @@ export class DepartmentService {
   getDepartments() : Observable<Department[]> {
     return this.http.get<Department[]>(this.apiUrl);
   }
-
 }

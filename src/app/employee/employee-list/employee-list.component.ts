@@ -11,19 +11,25 @@ import { Router } from '@angular/router';
 })
 export class EmployeeListComponent implements OnInit {
 
+  searchName: string = '';
+  searchEmail: string = '';
+
   empList: Employee[] = [];
   constructor(private empServ: EmployeeService, private router: Router) { }
 
   ngOnInit(): void {
-    this.empServ.getEmployees().subscribe((data: Employee[]) => {console.log(data); this.empList = data})
-}
-edit(id : number) {
-  this.router.navigate(['/Edit', id]);
-}
+    this.empServ.getEmployees(this.searchName, this.searchEmail).subscribe((data: Employee[]) => {this.empList = data })
+  }
+  edit(id: number) {
+    this.router.navigate(['/Edit', id]);
+  }
 
-Add()
-{
-  this.router.navigate(['/Add']);
-}
+  Add() {
+    this.router.navigate(['/Add']);
+  }
+
+  onSearch(): void {
+    this.empServ.getEmployees(this.searchName, this.searchEmail).subscribe((data: Employee[]) => {this.empList = data})
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Employee, EmployeeService } from '../employee.service';
+import { Employee, EmployeeService } from '../employee.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Department, DepartmentService } from '../department.service';
@@ -20,7 +20,7 @@ export class EmployeeEditComponent implements OnInit {
   // to take from the link.
   id: number = 0;
   //from api, and to submit back in.
-  emp!: Employee ;
+  emp!: Employee;
   // to take from api
   depList: Department[] = [];
 
@@ -30,10 +30,10 @@ export class EmployeeEditComponent implements OnInit {
     this.id = Number(this.route.snapshot.paramMap.get('id'))
     this.empServ.getEmployeeById(this.id).subscribe(data => this.emp = data);
     this.depServ.getDepartments()
-    .subscribe((data: Department[]) => {
-      console.log(data);
-      this.depList = data;
-    })
+      .subscribe((data: Department[]) => {
+        console.log(data);
+        this.depList = data;
+      })
   }
 
   onSubmit() {
@@ -49,19 +49,35 @@ export class EmployeeEditComponent implements OnInit {
 
     console.log(this.emp)
     this.empServ.editEmployee(this.emp)
-
-      // old way to subscribe
-      .subscribe(response => {
-        console.log("edited successfully type thing", response);
-        this.back();
-      },
-        error => {
-          console.error("error message type thing", error);
-        })
+      .subscribe({
+        next: response => {
+          console.log("Employee edited successfully:", response);
+          this.back();
+        },
+        error: error => {
+          console.error("Error while editing employee:", error);
+        }
+      });
   }
 
   back() {
     this.router.navigate([''])
   }
 
+  delete() {
+    if (window.confirm('Are you sure you want to delete this employee?')) {
+      this.empServ.deleteEmployee(this.id)
+        .subscribe({
+          next: () => {
+            this.back();
+          },
+          error: (err) => {
+            if (err.status === 404)
+              console.error("Employee not found ");
+            else
+              console.error("idk man weird error type shi");
+          }
+        })
+    }
+  }
 }
